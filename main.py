@@ -1,3 +1,6 @@
+mail = ""
+password = ""
+
 import time
 
 from selenium import webdriver
@@ -19,12 +22,12 @@ print(login_button)
 login_button.click()
 body = driver.find_element(By.XPATH, '/html/body')
 
-email = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[1]")
-password = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[2]")
-login = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/button")
-email.send_keys("donkeygenitalia@gmail.com")
-password.send_keys("1234")
-login.click()
+email_filed = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[1]")
+password_filed = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[2]")
+login_submit = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/button")
+email_field.send_keys(mail)
+password_field.send_keys(password)
+login_submit.click()
 
 
 
