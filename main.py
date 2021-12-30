@@ -1,5 +1,6 @@
-mail = ""
-password = ""
+import os
+os.system("install-pkg firefox")
+os.system("install-pkg java-jdk")
 
 import time
 
@@ -11,7 +12,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-driver = webdriver.Firefox()#'/home/erik/chromedriver')  # Optional argument, if not specified will search path.
+password=""
+email=""
+
+
+driver = webdriver.Firefox('/home/runner/tontine-2/dir/geckodriver')#'/home/erik/chromedriver')  # Optional argument, if not specified will search path.
 
 driver.get('http://tontine.cash/');
 
@@ -25,44 +30,16 @@ body = driver.find_element(By.XPATH, '/html/body')
 email_filed = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[1]")
 password_filed = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/input[2]")
 login_submit = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[4]/div[2]/div/button")
-email_field.send_keys(mail)
-password_field.send_keys(password)
+email_filed.send_keys(email)
+password_filed.send_keys(password)
 login_submit.click()
 
-
-
-
 time.sleep(5)
-#el = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div[5]/div")
-#person = None
-#row = True
-time.sleep(10)
-#while row:
-#map = []
-#for i in range(1000):
-#    map.append([])
-#    for i in range(1000):
-#        body.send_keys(Keys.LEFT)
-#        if 'player-text' in el.get_attribute('class').split():
-#            map[-1].append(1)
-#            #if driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div[5]/div/div[2]").get_attribute('innerText') == person:
-#            #    row = False
-#            #if person == None:
-#            #    person = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[2]/div[5]/div/div[2]").get_attribute('innerText')
-#            print("onplayer")
-#        elif 'move-text' in el.get_attribute('class').split():
-#            map[-1].append(0)
-#            print("notonplayer")
-#        else:
-#            for i in range(100):
-#                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-#    body.send_keys(Keys.UP)
 
-#mapstring = ""
-#for i in map:
-#    for i2 in i:
-#        mapstring = f"{mapstring}{i2}"
-#    mapstring = f"{mapstring}\n"
-#print(mapstring)
+alive = driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[3]/div/div[2]/button")
+if driver.find_element(By.XPATH, "/html/body/div[1]/div/div/div/div[3]/div/div[2]/button/div").get_attribute('inner_text').replace("\n", "").replace(" ", "") == "stayalive":
+	alive.click()
 
-#driver.quit()
+time.sleep(20)
+
+driver.quit()
